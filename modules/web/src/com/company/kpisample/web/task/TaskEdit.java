@@ -65,7 +65,7 @@ public class TaskEdit extends AbstractEditor<Task> {
 
     @Override
     protected boolean preCommit() {
-//        setTaskAchievements();
+        setTaskAchievements();
 
         return super.preCommit();
     }

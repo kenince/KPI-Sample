@@ -19,24 +19,24 @@ public class TaskEntityListener implements BeforeUpdateEntityListener<Task> {
     @Override
     public void onBeforeUpdate(Task entity, EntityManager entityManager) {
 
-        Double taskAchievement = 0.0;
-        log.error("starting task achievement entity listener code");
-        for (Achievement a : entity.getAchievement()) {
-            totalAchievement = nullToZero(a.getAchievement());
-            taskAchievement = taskAchievement + totalAchievement;
-
-        }
-        entity.setTaskAchievement(nullToZero(taskAchievement));
+//        Double taskAchievement = 0.0;
+//        log.error("starting task achievement entity listener code");
+//        for (Achievement a : entity.getAchievement()) {
+//            totalAchievement = nullToZero(a.getAchievement());
+//            taskAchievement = taskAchievement + totalAchievement;
+//
+//        }
+//        entity.setTaskAchievement(nullToZero(taskAchievement));
 
     }
 
-    Double nullToZero(Double d) {
-        if (d == null) {
-            return 0.0;
-        } else {
-            return d;
-        }
-    }
+//    Double nullToZero(Double d) {
+//        if (d == null) {
+//            return 0.0;
+//        } else {
+//            return d;
+//        }
+//    }
 
 
 }
