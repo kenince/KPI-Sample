@@ -16,6 +16,11 @@ public class KPIEdit extends AbstractEditor<KPI> {
 
 //    ##### Overrides Go Here ######
 
+    @Override
+    protected boolean preCommit() {
+        setKPIAchievements();
+        return super.preCommit();
+    }
 
 
 //    ###### ALL CODE GOES DOWN HERE ###
