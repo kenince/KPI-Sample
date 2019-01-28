@@ -13,7 +13,9 @@ import javax.persistence.OneToMany;
 import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.global.DeletePolicy;
+import com.haulmont.cuba.core.entity.annotation.Listeners;
 
+@Listeners("kpisample_TaskEntityListener")
 @NamePattern("%s|taskName")
 @Table(name = "KPISAMPLE_TASK")
 @Entity(name = "kpisample$Task")

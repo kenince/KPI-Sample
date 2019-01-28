@@ -29,7 +29,6 @@
         <groupBox id="achievementBox"
                   caption="msg://com.company.kpisample.entity/KPI.achievement">
             <table id="achievementTable"
-                   height="200px"
                    width="100%">
                 <actions>
                     <action id="create"/>

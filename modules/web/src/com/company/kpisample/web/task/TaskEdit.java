@@ -50,8 +50,6 @@ public class TaskEdit extends AbstractEditor<Task> {
     public void init(Map<String, Object> params) {
         manageKPIField();
 
-
-
         super.init(params);
     }
 
@@ -59,22 +57,23 @@ public class TaskEdit extends AbstractEditor<Task> {
     @Override
     public void ready() {
         updateKPIDetails();
-//        getItem().setTaskAchievement(1.0);
         refreshTaskAchievement();
 
         super.ready();
     }
-    private void refreshTaskAchievement() {
-        achievementsDs.addCollectionChangeListener(e -> {
-            log.error("Checking the size = "+ e.getItems().size());
-            if (e.getItems().size() !=0){
-                setTaskAchievements();
-                log.error("log size = " + e.getItems().size());
-            }
 
 
-        });
+    @Override
+    protected boolean preCommit() {
+//        setTaskAchievements();
+
+        return super.preCommit();
     }
+
+
+
+
+//    ###### ALL CODE GOES DOWN HERE ###
 
     private void setTaskAchievements() {
         Double taskAchievement = 0.0;
@@ -85,6 +84,18 @@ public class TaskEdit extends AbstractEditor<Task> {
 
         }
         getItem().setTaskAchievement(nullToZero(taskAchievement));
+    }
+
+    private void refreshTaskAchievement() {
+        achievementsDs.addCollectionChangeListener(e -> {
+            log.error("Checking the size = "+ e.getItems().size());
+            if (e.getItems().size() !=0){
+                setTaskAchievements();
+                log.error("log size = " + e.getItems().size());
+            }
+
+
+        });
     }
 
     private void manageKPIField() {
@@ -115,12 +126,12 @@ public class TaskEdit extends AbstractEditor<Task> {
     }
 
     Double nullToZero(Double d) {
-    if (d == null) {
-        return 0.0;
-    } else {
-        return d;
+        if (d == null) {
+            return 0.0;
+        } else {
+         return d;
+        }
     }
-}
 
     public void onAddAchievementButtonClick() {
         Achievement achievementAdd = metadata.create(Achievement.class);
