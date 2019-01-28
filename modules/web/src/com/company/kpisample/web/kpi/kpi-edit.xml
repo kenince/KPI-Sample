@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.kpisample.web.kpi.KPIEdit"
+        datasource="kPIDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.kpisample.web.kpi">
+    <dsContext>
+        <datasource id="kPIDs"
+                    class="com.company.kpisample.entity.KPI"
+                    view="kPI-view">
+            <collectionDatasource id="achievementDs"
+                                  property="achievement"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="kPIDs">
+            <column width="250px">
+                <field property="kpi"/>
+                <field property="baseline"/>
+                <field property="target"/>
+                <field property="totalAchievement"/>
+            </column>
+        </fieldGroup>
+        <groupBox id="achievementBox"
+                  caption="msg://com.company.kpisample.entity/KPI.achievement">
+            <table id="achievementTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="create"/>
+                    <action id="edit"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="achievement"/>
+                    <column id="achievementDate"/>
+                    <column id="task"/>
+                </columns>
+                <rows datasource="achievementDs"/>
+                <buttonsPanel>
+                    <button action="achievementTable.create"/>
+                    <button action="achievementTable.edit"/>
+                    <button action="achievementTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

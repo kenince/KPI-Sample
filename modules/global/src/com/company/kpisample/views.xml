@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+    <view class="com.company.kpisample.entity.Achievement"
+          extends="_local"
+          name="achievement-view">
+        <property name="kPI"
+                  view="_minimal">
+            <property name="baseline"/>
+            <property name="target"/>
+            <property name="totalAchievement"/>
+        </property>
+        <property name="task"
+                  view="_minimal">
+            <property name="taskTarget"/>
+            <property name="taskAchievement"/>
+        </property>
+    </view>
+    <view class="com.company.kpisample.entity.KPI"
+          extends="_local"
+          name="kPI-view">
+        <property name="achievement"
+                  view="_minimal">
+            <property name="achievement"/>
+            <property name="achievementDate"/>
+            <property name="task"
+                      view="_minimal"/>
+        </property>
+        <property name="task"
+                  view="_minimal">
+            <property name="taskTarget"/>
+            <property name="taskAchievement"/>
+        </property>
+    </view>
+    <view class="com.company.kpisample.entity.Task"
+          extends="_local"
+          name="task-view">
+        <property name="kPI"
+                  view="_minimal">
+            <property name="target"/>
+            <property name="totalAchievement"/>
+        </property>
+        <property name="achievement"
+                  view="_minimal">
+            <property name="achievement"/>
+            <property name="achievementDate"/>
+        </property>
+    </view>
+</views>

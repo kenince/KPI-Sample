@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             version="2.0">
+    <persistence-unit name="KPISample"
+                      transaction-type="RESOURCE_LOCAL">
+        <class>com.company.kpisample.entity.KPI</class>
+        <class>com.company.kpisample.entity.Achievement</class>
+        <class>com.company.kpisample.entity.Task</class>
+    </persistence-unit>
+</persistence>

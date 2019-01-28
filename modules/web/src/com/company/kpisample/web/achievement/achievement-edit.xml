@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.kpisample.web.achievement.AchievementEdit"
+        datasource="achievementDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.kpisample.web.achievement">
+    <dsContext>
+        <datasource id="achievementDs"
+                    class="com.company.kpisample.entity.Achievement"
+                    view="achievement-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="achievementDs">
+            <column width="250px">
+                <field caption="KPI"
+                       editable="false"
+                       property="kPI"/>
+                <field caption="KPI Target"
+                       editable="false"
+                       property="kPI.target"/>
+                <field property="achievement"/>
+                <field property="achievementDate"/>
+            </column>
+            <column>
+                <field editable="false"
+                       property="task.taskName"/>
+                <field caption="KPI Total Achievement"
+                       editable="false"
+                       property="kPI.totalAchievement"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

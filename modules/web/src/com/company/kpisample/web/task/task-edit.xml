@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.kpisample.web.task.TaskEdit"
+        datasource="taskDs"
+        focusComponent="taskFieldGroup"
+        messagesPack="com.company.kpisample.web.task">
+    <dsContext>
+        <datasource id="taskDs"
+                    class="com.company.kpisample.entity.Task"
+                    view="task-view">
+            <collectionDatasource id="achievementDs"
+                                  property="achievement"/>
+            <groupDatasource id="achievementsDs"
+                             property="achievement"/>
+        </datasource>
+        <collectionDatasource id="kPIsDs"
+                              class="com.company.kpisample.entity.KPI"
+                              view="kPI-view">
+            <query>
+                <![CDATA[select e from kpisample$KPI e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <groupBox orientation="horizontal">
+            <fieldGroup id="taskFieldGroup"
+                        datasource="taskDs">
+                <column width="250px">
+                    <field property="taskName"
+                           required="true"/>
+                    <field editable="false"
+                           property="taskTarget"/>
+                    <field editable="false"
+                           property="taskAchievement"/>
+                </column>
+            </fieldGroup>
+            <fieldGroup id="kpiFieldGroup"
+                        datasource="taskDs">
+                <column width="250px">
+                    <field caption="KPI"
+                           optionsDatasource="kPIsDs"
+                           property="kPI"/>
+                </column>
+                <column>
+                    <field editable="false"
+                           property="kpiTarget"/>
+                    <field editable="false"
+                           property="kpiAchievement"/>
+                </column>
+            </fieldGroup>
+        </groupBox>
+        <table id="achievementTable"
+               width="50%">
+            <actions>
+                <action id="create"
+                        invoke="onCreate"/>
+                <action id="remove"
+                        trackSelection="true"/>
+            </actions>
+            <columns>
+                <column id="achievement"/>
+                <column id="achievementDate"/>
+            </columns>
+            <rows datasource="achievementsDs"/>
+            <buttonsPanel>
+                <button id="addAchievementbutton"
+                        caption="Add Achievement"
+                        invoke="onAddAchievementButtonClick"/>
+                <button id="createButton"
+                        action="achievementTable.create"
+                        caption="Add"/>
+                <button id="removeAchievementButton"
+                        action="achievementTable.remove"/>
+            </buttonsPanel>
+        </table>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

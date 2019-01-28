@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
+    <screen id="kpisample$KPI.browse"
+            template="com/company/kpisample/web/kpi/kpi-browse.xml"/>
+    <screen id="kpisample$KPI.edit"
+            template="com/company/kpisample/web/kpi/kpi-edit.xml"/>
+    <screen id="kpisample$Task.browse"
+            template="com/company/kpisample/web/task/task-browse.xml"/>
+    <screen id="kpisample$Task.edit"
+            template="com/company/kpisample/web/task/task-edit.xml"/>
+    <screen id="kpisample$Achievement.edit"
+            template="com/company/kpisample/web/achievement/achievement-edit.xml"/>
+</screen-config>
