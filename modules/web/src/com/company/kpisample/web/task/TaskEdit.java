@@ -4,10 +4,8 @@ import com.company.kpisample.entity.Achievement;
 import com.company.kpisample.entity.KPI;
 import com.haulmont.cuba.core.global.Metadata;
 import com.haulmont.cuba.gui.WindowManager;
-import com.haulmont.cuba.gui.components.AbstractEditor;
+import com.haulmont.cuba.gui.components.*;
 import com.company.kpisample.entity.Task;
-import com.haulmont.cuba.gui.components.LookupPickerField;
-import com.haulmont.cuba.gui.components.TextField;
 import com.haulmont.cuba.gui.data.CollectionDatasource;
 import com.haulmont.cuba.gui.data.Datasource;
 
@@ -18,7 +16,6 @@ import java.util.UUID;
 
 import com.haulmont.cuba.gui.data.GroupDatasource;
 import org.slf4j.Logger;
-import com.haulmont.cuba.gui.components.Component;
 
 public class TaskEdit extends AbstractEditor<Task> {
 
@@ -45,10 +42,13 @@ public class TaskEdit extends AbstractEditor<Task> {
     private Double totalAchievement;
     @Inject
     private GroupDatasource<Achievement, UUID> achievementsDs;
+    @Inject
+    private Button addAchievementbutton;
 
     @Override
     public void init(Map<String, Object> params) {
         manageKPIField();
+        manageAchievement();
 
         super.init(params);
     }
@@ -74,6 +74,10 @@ public class TaskEdit extends AbstractEditor<Task> {
 
 
 //    ###### ALL CODE GOES DOWN HERE ###
+
+    private void manageAchievement() {
+
+    }
 
     private void setTaskAchievements() {
         Double taskAchievement = 0.0;
@@ -104,6 +108,7 @@ public class TaskEdit extends AbstractEditor<Task> {
             if (e.getValue() !=null){
                 taskTargetField.setEditable(true);
                 taskTargetField.setRequired(true);
+                addAchievementbutton.setEnabled(true);
             }
             else {
                 taskTargetField.setEditable(false);
@@ -111,6 +116,7 @@ public class TaskEdit extends AbstractEditor<Task> {
                 kpiTargetField.setValue(null);
                 kpiAchievementField.setValue(null);
                 taskTargetField.setRequired(false);
+                addAchievementbutton.setEnabled(false);
             }
         });
     }

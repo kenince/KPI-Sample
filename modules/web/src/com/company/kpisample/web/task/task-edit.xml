@@ -69,10 +69,8 @@
             <buttonsPanel>
                 <button id="addAchievementbutton"
                         caption="Add Achievement"
+                        enable="false"
                         invoke="onAddAchievementButtonClick"/>
-                <button id="createButton"
-                        action="achievementTable.create"
-                        caption="Add"/>
                 <button id="removeAchievementButton"
                         action="achievementTable.remove"/>
             </buttonsPanel>
