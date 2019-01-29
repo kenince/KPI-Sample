@@ -12,6 +12,14 @@
             <collectionDatasource id="achievementDs"
                                   property="achievement"/>
         </datasource>
+        <groupDatasource id="achievementsDs"
+                         class="com.company.kpisample.entity.Achievement"
+                         view="achievement-view">
+            <query>
+                <![CDATA[select e from kpisample$Achievement e
+where e.kPI.id = :ds$kPIDs]]>
+            </query>
+        </groupDatasource>
     </dsContext>
     <dialogMode height="600"
                 width="800"/>
@@ -23,7 +31,8 @@
                 <field property="kpi"/>
                 <field property="baseline"/>
                 <field property="target"/>
-                <field property="totalAchievement"/>
+                <field editable="false"
+                       property="totalAchievement"/>
             </column>
         </fieldGroup>
         <groupBox id="achievementBox"
@@ -40,9 +49,11 @@
                     <column id="achievementDate"/>
                     <column id="task"/>
                 </columns>
-                <rows datasource="achievementDs"/>
+                <rows datasource="achievementsDs"/>
                 <buttonsPanel>
-                    <button action="achievementTable.create"/>
+                    <button id="addAchievement"
+                            caption="Add Achievement"
+                            invoke="onAddAchievementClick"/>
                     <button action="achievementTable.edit"/>
                     <button action="achievementTable.remove"/>
                 </buttonsPanel>
